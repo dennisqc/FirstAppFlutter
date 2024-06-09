@@ -21,6 +21,7 @@ class HomePage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          leading: Icon(Icons.abc),
           backgroundColor: const Color(0xffA79277),
           title: Text(
             "Mi primera chamba",
@@ -33,34 +34,18 @@ class HomePage extends StatelessWidget {
           color: Colors.yellow,
           child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
                   height: 300,
+                  width: 300,
                   color: Colors.green,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      textT(),
-                      /* SizedBox(
-                    width: 24,
-                  ),*/
-                      Container(
-                        width: 20,
-                        color: Colors.blue,
-                        height: 150,
-                      ),
-                      Icon(
-                        Icons.arrow_downward_rounded,
-                        color: Colors.yellow,
-                        size: 150,
-                      )
-                    ],
-                  ),
+                  child: Image.network("https://static.vecteezy.com/system/resources/thumbnails/030/028/888/small_2x/crazy-spider-man-furious-mad-portrait-expressive-illustration-artwork-oil-painted-sketch-tattoo-photo.jpg")
                 ),
-                textT(),
-                textT(),
+                Image.asset("assets/images/spiderman.jpg",
+                fit: BoxFit.contain,)
+                //textT(),
+                //textT(),
               ]),
         ),
       ),
