@@ -18,10 +18,7 @@ class HomePage extends StatelessWidget {
             builder: (BuildContext context) {
               return IconButton(
                 icon: const Icon(Icons.menu),
-                onPressed: () {
-                  Scaffold.of(context).openDrawer();
-                },
-                tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+                onPressed: () {},
               );
             },
           ),
@@ -30,76 +27,95 @@ class HomePage extends StatelessWidget {
             // style: TextStyle(color: Colors.yellow),
           ),
           centerTitle: true,
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {},
+              tooltip: "Buscar",
+            ),
+            IconButton(
+              icon: Icon(Icons.save_alt),
+              onPressed: () {},
+              tooltip: "Descargar",
+            ),
+          ],
         ),
         body: Column(
           children: [
             Image.network(
                 "https://viajes.nationalgeographic.com.es/medio/2018/03/01/machu-picchu_5ff969ae_1280x720.jpg"),
+            Container(
+                padding: const EdgeInsets.all(18),
+                child: Text(
+                  "Monarch population soars 4,900 percent since last in thrilling 2021 western migration",
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'RobotoMono'),
+                )),
             Padding(
-              padding: const EdgeInsets.all(38.0),
+              padding: const EdgeInsets.only(right: 18, left: 18),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Machu Picchu",
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      Text(
-                        "Peru",
-                        style: TextStyle(color: Colors.grey),
-                      )
-                    ],
-                  ),
                   Row(
                     children: [
-                      Icon(
-                        Icons.star,
-                        color: Colors.orange,
+                      Image.network(
+                        "https://www.dzoom.org.es/wp-content/uploads/2018/02/fondos-retratos-16-1024x682.jpg",
+                        fit: BoxFit.contain,
+                        height: 50,
+                        width: 50,
                       ),
-                      Text("41")
+                      SizedBox(
+                        width: 15,
+                      ),
+                      Text("By Andy Con"),
                     ],
+                  ),
+                  Column(
+                    children: [Text("1Hr ago")],
                   )
                 ],
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 32, right: 32, bottom: 32),
+              padding: const EdgeInsets.all(18.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  iconBar("Call me", Icons.call),
-                  iconBar("Route", Icons.near_me),
-                  iconBar("Share", Icons.share),
+                  barIcon(("8 Coments"), Icons.textsms_outlined),
+                  barIcon("34 Likes", Icons.favorite_border),
+                  barIcon("Share", Icons.share_outlined)
                 ],
               ),
             ),
             Container(
-                padding: const EdgeInsets.only(right: 28, left: 28),
+                padding: const EdgeInsets.only(right: 18, left: 18),
                 child: Text(
-                    "Lorem ipsum is a placeholder text used in graphic design and publishing to demonstrate the visual style of a document, webpage, or typeface. It's intended to be a sample, not to be read as meaningful sentences. Lorem ipsum is essentially nonsense language, a garbled fragment of a longer Latin text written by the Roman philosopher Cicero in the 1st century BCE."))
+                    "Lorem ipsum is a placeholder text used in graphic design and publishing to demonstrate the visual style of a document, webpage, or typeface. It's intended to be a sample, not to be read as meaningful sentences. Lorem ipsum is essentially nonsense language, a garbled fragment of a longer Latin text written by the Roman philosopher Cicero in the 1st century BCE.")),
+            Container(
+                padding: const EdgeInsets.only(right: 18, left: 18),
+                child: Text(
+                    "Lorem ipsum is a placeholder text used in graphic design and publishing to demonstrate the visual style of a document, webpage, or typeface. It's intended to be a sample, not to be read as meaningful sentences. Lorem ipsum is essentially nonsense language, a garbled fragment of a longer Latin text written by the Roman philosopher Cicero in the 1st century BCE.")),
           ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          child: Icon(Icons.arrow_upward_outlined),
         ),
       ),
     );
   }
 }
 
-Widget iconBar(String accion, IconData icono) {
-  return Column(
+Widget barIcon(String accion, IconData icono) {
+  return Row(
     children: [
       Icon(
         icono,
-        color: Colors.blue,
       ),
       SizedBox(
-        height: 8,
+        width: 8,
       ),
       Text(accion)
     ],
