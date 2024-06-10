@@ -26,7 +26,7 @@ class HomePage extends StatelessWidget {
             },
           ),
           title: Text(
-            "Mi primera chamba",
+            "Bienvenido",
             // style: TextStyle(color: Colors.yellow),
           ),
           centerTitle: true,
@@ -74,42 +74,9 @@ class HomePage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Column(
-                    children: [
-                      Icon(
-                        Icons.call,
-                        color: Colors.blue,
-                      ),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      Text("Call me")
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Icon(
-                        Icons.near_me,
-                        color: Colors.blue,
-                      ),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      Text("Route")
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Icon(
-                        Icons.share,
-                        color: Colors.blue,
-                      ),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      Text("Shaer")
-                    ],
-                  ),
+                  iconBar("Call me", Icons.call),
+                  iconBar("Route", Icons.near_me),
+                  iconBar("Share", Icons.share),
                 ],
               ),
             ),
@@ -122,4 +89,19 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget iconBar(String accion, IconData icono) {
+  return Column(
+    children: [
+      Icon(
+        icono,
+        color: Colors.blue,
+      ),
+      SizedBox(
+        height: 8,
+      ),
+      Text(accion)
+    ],
+  );
 }
