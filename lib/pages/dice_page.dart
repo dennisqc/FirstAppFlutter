@@ -8,7 +8,7 @@ class DicePage extends StatefulWidget {
 }
 
 class _DicePageState extends State<DicePage> {
-  int n = 1;
+  int a = 1;
 
   @override
   Widget build(BuildContext context) {
