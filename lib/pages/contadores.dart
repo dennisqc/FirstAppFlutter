@@ -149,11 +149,13 @@ class _contadoresState extends State<contadores> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Column(
+                      
                       children: [
                         Text("Contador 5", style: estilos),
                         Text("$e", style: estilos),
                         ElevatedButton(
                             style: ButtonStyle(
+
                               backgroundColor: MaterialStateProperty.all(
                                   Color.fromARGB(255, 17, 0, 255)),
                             ),
