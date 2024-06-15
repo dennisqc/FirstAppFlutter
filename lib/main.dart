@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-//import 'package:myfirstproject/pages/dice_page.dart';
-import 'package:myfirstproject/pages/contadores.dart';
+import 'package:myfirstproject/pages/image_explorer_page.dart';
 
 void main() {
   runApp(
     MaterialApp(
-      home: contadores(),
+      home: imageExplorerPage(),
       debugShowCheckedModeBanner: false,
     ),
   );
