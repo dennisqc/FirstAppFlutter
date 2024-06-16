@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class imageExplorerPage extends StatefulWidget {
   const imageExplorerPage({super.key});
@@ -37,10 +38,10 @@ class _imageExplorerPageState extends State<imageExplorerPage> {
               height: MediaQuery.of(context).size.height / 3,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: NetworkImage(
-                    heroList[indexHero],
-                  ),fit: BoxFit.cover
-                ),
+                    image: NetworkImage(
+                      heroList[indexHero],
+                    ),
+                    fit: BoxFit.cover),
               ),
               // child: Image.network(
               //   heroList[indexHero],fit: BoxFit.cover,
@@ -57,7 +58,10 @@ class _imageExplorerPageState extends State<imageExplorerPage> {
                       setState(() {});
                       print(indexHero);
                     },
-                    child: Text("Siguiente"))
+                    child: Text(
+                      "Siguiente",
+                      style: GoogleFonts.roboto(),
+                    ))
               ],
             )
           ],
