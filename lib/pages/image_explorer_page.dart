@@ -27,7 +27,10 @@ class _imageExplorerPageState extends State<imageExplorerPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Image Explorer"),
+        title: Text(
+          "Image Explorer",
+          style: GoogleFonts.aBeeZee()
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 30),
@@ -60,7 +63,7 @@ class _imageExplorerPageState extends State<imageExplorerPage> {
                     },
                     child: Text(
                       "Siguiente",
-                      style: GoogleFonts.roboto(),
+                      style: GoogleFonts.aBeeZee(),                    
                     ))
               ],
             )
