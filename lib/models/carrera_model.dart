@@ -1,5 +1,5 @@
-class Carrera {
+class CarreraModel {
   String titulo;
   String duracion;
-  Carrera({required this.titulo, required this.duracion});
+  CarreraModel({required this.titulo, required this.duracion});
 }
