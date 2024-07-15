@@ -4,6 +4,7 @@ import 'package:myfirstproject/models/alumno_model.dart';
 import 'package:myfirstproject/models/carrera_model.dart';
 import 'package:myfirstproject/models/institucion_model.dart';
 import 'package:myfirstproject/models/maricula_model.dart';
+import 'package:myfirstproject/pages/institucion_card.dart';
 import 'package:myfirstproject/widgets/Alumno_card.dart';
 
 class MatriculaPage extends StatefulWidget {
@@ -28,23 +29,27 @@ class _MatriculaPageState extends State<MatriculaPage> {
   ];
   List<InstitucionModel> institucionList = [
     InstitucionModel(
-        nombre: "nombre1",
+        nombre: "PUCP",
         direccion: "direccion1",
         ruc: "ruc1",
         telefono: "telefono1",
         matriculas: [
           MatriculaModel(
-              alumno: AlumnoModel("nombre", "correo", "dni"),
+              alumno: AlumnoModel("Pedro", "correo", "dni"),
               carrera: CarreraModel(titulo: "titulo", duracion: "duracion"))
         ]),
     InstitucionModel(
-        nombre: "nombre2",
+        nombre: "nombre2 institucion",
         direccion: "direccion2",
         ruc: "ruc2",
         telefono: "telefono2",
         matriculas: []),
   ];
 
+  AlumnoModel auxAlumn =
+      AlumnoModel("nuevo nombres", "nuevo correo", "Nuevo dni");
+  CarreraModel auxCarrera =
+      CarreraModel(titulo: "panadero nuclear", duracion: "2 años");
   // generateListTiles() {
   //   AlumnoList.forEach((element) {
   //     tilesList.add(ItemCard(name: element.nombre, institution: "tecsup"));
@@ -61,65 +66,73 @@ class _MatriculaPageState extends State<MatriculaPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          AlumnoModel auxAlumno =
-              AlumnoModel("pancraacio", "gqaaa@gmail.com", "98765432");
-          AlumnoList.add(auxAlumno);
-          tilesList = [];
-          //     generateListTiles();
-          setState(() {});
-        },
-        child: Icon(Icons.add),
-      ),
-      appBar: AppBar(
-        title: Text("Nombre de Institucion"),
-      ),
-      body: Center(
-        child: Column(
-          children: [
-            ...institucionList.map(
-              (institucionSeleccionada) {
-                return Column(
-                  children: [
-                    Text(institucionSeleccionada.nombre),
-                    ...institucionSeleccionada.matriculas.map(
-                      (e) => Text("Hola"),
-                    )
-                  ],
-                );
-              },
-            ),
-            Text("Nombre Institucion"),
-            // ...tilesList,
-            ...AlumnoList.map((AlumnoSeleccionado) => ItemCard(
-                  name: AlumnoSeleccionado.nombre,
-                  institution: "pucp",
-                  functionDelete: () {
-                    // AlumnoList.removeLast();
-                    AlumnoList.remove(AlumnoSeleccionado);
-                    setState(() {});
-                  },
-                  functionEdit: () {
-                    // AlumnoSeleccionado.nombre = "Dennis gaaaa";
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            children: [
+              ...institucionList.map(
+                (institucionSeleccionada) {
+                  return Column(
+                    children: [
+                      Text(institucionSeleccionada.nombre),
+                      InstitucionCard(
+                          name: institucionSeleccionada.nombre,
+                          cantidadMatriculas:
+                              institucionSeleccionada.matriculas.length,
+                          addMatriculas: () {},
+                          restartMatriculas: () {}),
+                      ...institucionSeleccionada.matriculas
+                          .map((matriculaSeleccionada) => ItemCard(
+                              name: matriculaSeleccionada.alumno.nombre,
+                              institution: institucionSeleccionada.nombre,
+                              functionDelete: () {
+                                institucionSeleccionada.matriculas
+                                    .remove(matriculaSeleccionada);
+                                setState(() {});
+                              },
+                              functionEdit: () {
+                                institucionSeleccionada.matriculas[
+                                        institucionSeleccionada.matriculas
+                                            .indexOf(matriculaSeleccionada)] =
+                                    MatriculaModel(
+                                        alumno: auxAlumn, carrera: auxCarrera);
+                                setState(() {});
+                              }))
+                    ],
+                  );
+                },
+              ).toList(),
+              // Text("Nombre Institucion"),
+              // ...tilesList,
+              ...AlumnoList.map((AlumnoSeleccionado) => ItemCard(
+                    name: AlumnoSeleccionado.nombre,
+                    institution: "pucpa",
+                    functionDelete: () {
+                      // AlumnoList.removeLast();
+                      AlumnoList.remove(AlumnoSeleccionado);
+                      setState(() {});
+                    },
+                    functionEdit: () {
+                      // AlumnoSeleccionado.nombre = "Dennis gaaaa";
 
-                    AlumnoList[AlumnoList.indexOf(AlumnoSeleccionado)] =
-                        AlumnoModel("nombre", "correo", "dni");
+                      AlumnoList[AlumnoList.indexOf(AlumnoSeleccionado)] =
+                          AlumnoModel("nombre", "correo", "dni");
 
-                    setState(() {});
-                  },
-                ))
+                      setState(() {});
+                    },
+                  ))
 
-            // GestureDetector(
-            //   child: Icon(Icons.delete),
-            //   onTap: () {
-            //     print("hola");
-            //   },
-            //   onDoubleTap: () {
-            //     print("Doble Tap");
-            //   },
-            // )
-          ],
+              // GestureDetector(
+              //   child: Icon(Icons.delete),
+              //   onTap: () {
+              //     print("hola");
+              //   },
+              //   onDoubleTap: () {
+              //     print("Doble Tap");
+              //   },
+              // )
+            ],
+          ),
         ),
       ),
     );
